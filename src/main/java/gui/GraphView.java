@@ -22,14 +22,13 @@ public class GraphView extends Application {
         this.graph = graph;
     }
 
-    private Scene scene;
     private VisGraph graph;
 
     @Override
     public void start(Stage stage) {
         // create the scene
         stage.setTitle("Network view");
-        scene = new Scene(new Browser(graph),750,500, Color.web("#666970"));
+        Scene scene = new Scene(new Browser(graph), 750, 500, Color.web("#666970"));
         stage.setScene(scene);
         stage.show();
     }
@@ -62,12 +61,6 @@ class Browser extends Region {
             if(newValue == Worker.State.SUCCEEDED)
                 webEngine.executeScript(script);
         });
-    }
-
-    private Node createSpacer() {
-        Region spacer = new Region();
-        HBox.setHgrow(spacer, Priority.ALWAYS);
-        return spacer;
     }
 
     @Override

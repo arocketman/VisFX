@@ -27,7 +27,7 @@ Here are some example graphs:
 
 ![Wordnet-art](https://i.imgur.com/WgjWLRH.png)
 
-Graphs are zoomable and nodes are movable just like the original VisFx.
+Graphs are zoomable and nodes are movable just like the original vis.js
 
 
 # Contributing

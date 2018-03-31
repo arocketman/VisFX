@@ -3,6 +3,8 @@ package graph;
 import com.google.gson.Gson;
 import jsonutils.VisEdgeAdapter;
 
+import javax.management.relation.Relation;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,6 +45,29 @@ public class VisGraph {
 
     public String getEdgesJson(){
         return VisEdgeAdapter.getAsJsonArray(edges).toString();
+    }
+
+    public boolean containsNode(long offset) {
+        return this.nodes.containsKey(offset);
+    }
+
+    public VisNode getNode(long id){
+        return this.nodes.get(id);
+    }
+
+    public void saveAsSif(String destFile){
+        BufferedWriter fos = null;
+        try {
+            fos = new BufferedWriter(new FileWriter(new File(destFile)));
+            for(VisEdge visEdge : edges){
+                fos.write(visEdge.getFrom().getLabel() + " " + visEdge.getLabel() + " " + visEdge.getTo().getLabel() + "\n");
+                fos.flush();
+            }
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
